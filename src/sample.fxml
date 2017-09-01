@@ -1,0 +1,41 @@
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane fx:controller="Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <Button text="Browse" onAction="#openFile" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <TextField fx:id="browseText" editable="false" minWidth="100" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Pane GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.columnIndex="0">
+        <Canvas fx:id="imageCanvas" width="400" height="300" onMouseDragged="#translateImage" onMousePressed="#imageCanvasOnClick">
+        </Canvas>
+        <Canvas fx:id="overlayCanvas" width="400" height="300" mouseTransparent="true"/>
+    </Pane>
+    <TitledPane text="Scale" collapsible="false" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+        <Slider fx:id="overlaySizeSlider" min="-5" max="5" />
+    </TitledPane>
+    <TitledPane text="Rotation" collapsible="false" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+        <Slider fx:id="overlayRotationSlider" min="-180" max="180" />
+    </TitledPane>
+
+    <Button onAction="#saveGrid" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+    <Canvas fx:id="gridCanvas" width="750" height="750" GridPane.rowIndex="1" GridPane.columnIndex="2"
+            GridPane.columnSpan="2"/>
+    <FlowPane hgap="10" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="2">
+        <Label text="Rows:     "/>
+        <Spinner fx:id="gridRowsSpinner" editable="true">
+        </Spinner>
+    </FlowPane>
+    <FlowPane hgap="10" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="3">
+        <Label text="Columns:"/>
+        <Spinner fx:id="gridColumnsSpinner" editable="true">
+        </Spinner>
+    </FlowPane>
+    <FlowPane hgap="10" GridPane.columnSpan="1" GridPane.rowIndex="2" GridPane.columnIndex="3">
+        <Label text="Color 1:"/>
+        <ColorPicker fx:id="color1Picker"/>
+    </FlowPane>
+    <FlowPane hgap="10" GridPane.columnSpan="1" GridPane.rowIndex="3" GridPane.columnIndex="3">
+        <Label text="Color 2:"/>
+        <ColorPicker fx:id="color2Picker"/>
+    </FlowPane>
+</GridPane>
